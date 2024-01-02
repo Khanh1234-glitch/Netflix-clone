@@ -5,7 +5,7 @@ function App() {
     return (
         <div className="app">
             <Routes>
-                <Route path="/" element={<HomeScreen />} />
+                <Route path="/Netflix-clone" element={<HomeScreen />} />
             </Routes>
         </div>
     );
