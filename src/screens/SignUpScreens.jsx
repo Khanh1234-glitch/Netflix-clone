@@ -12,8 +12,8 @@ function SignUpScreens() {
         <div className="signUpScreens">
             <form>
                 <h1>Sign In</h1>
-                <input type="Email" placeholder="Email" />
-                <input type="Password" placeholder="Password" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
                 <button onClick={signIn} type="submit">
                     Sign In
                 </button>
