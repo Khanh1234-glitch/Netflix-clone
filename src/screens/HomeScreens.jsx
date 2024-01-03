@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./HomeScreen.css";
-import Nav from "./Nav";
+import Nav from "../Nav";
 import { useEffect } from "react";
-import Banner from "./Banner";
-import Row from "./Row";
-import requests from "./Request";
+import Banner from "../Banner";
+import Row from "../Row";
+import requests from "../Request";
 
 function HomeScreen() {
     return (

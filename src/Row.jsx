@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Row.css";
+import style from "./Row.module.css";
 import axios from "axios";
 
 function Row({ title, isLargeRow = false, fetchUrl }) {
@@ -15,13 +15,13 @@ function Row({ title, isLargeRow = false, fetchUrl }) {
     }, [fetchUrl]);
 
     return (
-        <div className="row">
+        <div className={style.row}>
             <h2>{title}</h2>
-            <div className="row__posters">
+            <div className={style.row__posters}>
                 {movie?.map((movie, key) => (
                     <div key={key}>
                         <img
-                            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                            className={`${style.row__poster} ${isLargeRow && style.row__posterLarge}`}
                             src={`${img_URL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
                             alt={movie.name}
                         />
