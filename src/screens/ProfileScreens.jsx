@@ -18,6 +18,7 @@ function ProfileScreens() {
         localStorage.removeItem("loggedInUser");
         console.log("User logged out successfully");
         navigate("/Netflix-clone");
+        window.location.reload();
     };
     return (
         <div className="profileScreens">
