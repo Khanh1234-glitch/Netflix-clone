@@ -6,13 +6,9 @@ function App() {
     const user = null;
     return (
         <div className="app">
-            {!user ? (
-                <LoginScreen />
-            ) : (
-                <Routes>
-                    <Route path="/Netflix-clone" element={<HomeScreen />} />
-                </Routes>
-            )}
+            <Routes>
+                {!user ? <Route path="/Netflix-clone" element={<LoginScreen />} /> : <Route path="/Netflix-clone" element={<HomeScreen />} />}
+            </Routes>
         </div>
     );
 }
