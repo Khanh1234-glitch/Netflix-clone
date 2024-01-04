@@ -4,15 +4,17 @@ import { registerUser } from "../Auth/RegisterUser";
 import { loginUser } from "../Auth/LoginUser";
 import { useState } from "react";
 
-function SignUpScreens() {
+function SignUpScreens({ signUp = false, setSignUp }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const register = async (e) => {
         e.preventDefault();
         try {
             const newUser = await registerUser({ password, email });
-            console.log("New user registered:", newUser);
+            alert("New user registered:", newUser);
             // Thực hiện các bước sau khi đăng ký thành công.
+            setSignUp(false);
         } catch (error) {
             console.error("Registration failed:", error.message);
         }
@@ -25,6 +27,7 @@ function SignUpScreens() {
             // Thực hiện các bước sau khi đăng nhập thành công.
             alert("Logged in successfully");
             localStorage.setItem("loggedInUser", JSON.stringify(user));
+            window.location.reload();
         } catch (error) {
             console.error("Login failed:", error.message);
             alert("Account does not exist");
@@ -33,20 +36,27 @@ function SignUpScreens() {
     return (
         <div className="signUpScreens">
             <form>
-                <h1>Sign In</h1>
+                {!signUp ? <h1>Sign In</h1> : <h1>Sign Up</h1>}
                 <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
                 <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-                <button onClick={signIn} type="submit">
-                    Sign In
-                </button>
-                <h4>
-                    New to Netflix?{" "}
-                    <span>
-                        <Link className="signUpScreens__link" onClick={register}>
-                            Sign up now.
-                        </Link>
-                    </span>
-                </h4>
+                {!signUp ? <button onClick={signIn}>Sign In</button> : <button onClick={register}>Sign Up</button>}
+                {!signUp ? (
+                    <h4>
+                        New to Netflix?{" "}
+                        <span>
+                            <Link
+                                className="signUpScreens__link"
+                                onClick={() => {
+                                    setSignUp(true);
+                                }}
+                            >
+                                Sign up now.
+                            </Link>
+                        </span>
+                    </h4>
+                ) : (
+                    ""
+                )}
             </form>
         </div>
     );

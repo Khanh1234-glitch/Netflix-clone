@@ -3,14 +3,21 @@ import "./LoginScreens.css";
 import SignUpScreens from "./SignUpScreens";
 
 function LoginScreen() {
-    const [singIn, setSignIn] = useState(false);
+    const [signIn, setSignIn] = useState(false);
+    const [signUp, setSignUp] = useState(false);
     return (
         <div className="loginScreens">
             <div className="loginScreens__Background">
-                <img className="loginScreens__logo" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png" alt="" />
+                <img
+                    onClick={() => setSignIn(false)}
+                    className="loginScreens__logo"
+                    src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+                    alt=""
+                />
                 <button
                     onClick={() => {
                         setSignIn(true);
+                        setSignUp(false);
                     }}
                     className="loginScreens__button"
                 >
@@ -20,8 +27,8 @@ function LoginScreen() {
             <div className="loginScreen__gradient"></div>
 
             <div className="loginScreen__Body">
-                {singIn ? (
-                    <SignUpScreens />
+                {signIn ? (
+                    <SignUpScreens signUp={signUp} setSignUp={setSignUp} />
                 ) : (
                     <>
                         <h1>Unlimited films, TV programmes and more</h1>

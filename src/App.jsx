@@ -11,6 +11,7 @@ function App() {
     useEffect(() => {
         // Kiểm tra xem có người dùng đã đăng nhập không
         const userFromLocalStorage = localStorage.getItem("loggedInUser");
+
         if (userFromLocalStorage) {
             setUser(JSON.parse(userFromLocalStorage));
         }
